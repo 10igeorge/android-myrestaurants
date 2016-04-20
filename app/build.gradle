@@ -3,9 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
     useLibrary 'org.apache.http.legacy'
 
+    dexOptions {
+        maxProcessCount 2
+    }
 
     defaultConfig {
         applicationId "com.epicodus.myrestaurants"
@@ -33,4 +35,5 @@ dependencies {
     testCompile 'org.robolectric:robolectric:3.0'
     testCompile 'org.robolectric:shadows-support-v4:3.0'
     compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
 }
