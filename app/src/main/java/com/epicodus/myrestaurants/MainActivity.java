@@ -11,7 +11,7 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
@@ -21,14 +21,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mFindRestaurantsButton.setOnClickListener(this);
+    }
 
-        mFindRestaurantsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+        public void onClick(View v){
+        switch (v.getId()){
+            case R.id.findRestaurantsButton:
                 String location = mLocationEditText.getText().toString();
                 Intent intent = new Intent(MainActivity.this, RestaurantsActivity.class);
                 startActivity(intent);
-            }
-        });
+                break;
+            default:
+                break;
+        }
     }
 }
